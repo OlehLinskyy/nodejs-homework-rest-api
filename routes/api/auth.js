@@ -23,6 +23,10 @@ router.patch(
   ctrl.updateAvatar
 );
 
+router.get("/verify/:token", ctrl.verify);
+
+router.post("/verify", ctrl.newVerify);
+
 router.patch(
   "/users",
   authenticate,

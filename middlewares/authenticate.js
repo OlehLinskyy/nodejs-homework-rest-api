@@ -18,6 +18,11 @@ const authenticate = async (req, res, next) => {
     if (!user || !user.token || user.token !== token) {
       next(HttpError(401));
     }
+    console.log(user.verified);
+    if (user.verified !== true) {
+      return res.status(401).send({ message: "You are not verify" });
+    }
+
     req.user = user;
     next();
   } catch {
